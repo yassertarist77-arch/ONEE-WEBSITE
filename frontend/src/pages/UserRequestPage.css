@@ -1,0 +1,263 @@
+.ureq-root {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ureq-head { padding-top: 8px; }
+.ureq-title { margin: 0 0 4px; font-size: 22px; font-weight: 800; color: #064e3b; }
+.ureq-sub { margin: 0; color: #6b7280; font-size: 13px; }
+
+.ureq-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.ureq-banner--ok { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+.ureq-banner--err { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+.ureq-banner-x { border: none; background: transparent; cursor: pointer; font-size: 16px; }
+
+.ureq-panels {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 20px;
+    align-items: start;
+}
+@media (max-width: 960px) {
+    .ureq-panels { grid-template-columns: 1fr; }
+}
+
+.ureq-panel {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.ureq-panel-title {
+    margin: 0 0 14px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.ureq-count {
+    background: #0d9488;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.ureq-filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.ureq-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 8px 12px;
+    background: #f9fafb;
+}
+.ureq-search input { flex: 1; border: none; background: transparent; outline: none; font-size: 14px; }
+.ureq-select {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    background: #fff;
+}
+
+.ureq-loading { display: flex; align-items: center; gap: 10px; color: #6b7280; padding: 24px; justify-content: center; }
+.ureq-spinner {
+    width: 20px; height: 20px;
+    border: 2px solid #e5e7eb;
+    border-top-color: #0d9488;
+    border-radius: 50%;
+    animation: ureqspin 0.7s linear infinite;
+}
+@keyframes ureqspin { to { transform: rotate(360deg); } }
+
+.ureq-list { display: flex; flex-direction: column; gap: 10px; max-height: 62vh; overflow: auto; }
+.ureq-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #f3f4f6;
+    border-radius: 12px;
+    background: #fafafa;
+}
+.ureq-card-name { font-weight: 600; color: #111827; font-size: 14px; }
+.ureq-card-meta { font-size: 12px; color: #6b7280; margin-top: 2px; }
+.ureq-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+.ureq-badge--ok { background: #d1fae5; color: #065f46; }
+.ureq-badge--low { background: #ffedd5; color: #c2410c; }
+.ureq-badge--out { background: #fee2e2; color: #b91c1c; }
+
+.ureq-add {
+    flex-shrink: 0;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    background: #0d9488;
+    color: #fff;
+}
+.ureq-add:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.ureq-empty {
+    text-align: center;
+    padding: 32px 12px;
+    color: #9ca3af;
+}
+.ureq-empty p { margin: 8px 0 0; font-size: 14px; }
+
+.ureq-cart { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.ureq-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #f3f4f6;
+    border-radius: 10px;
+    background: #fafafa;
+}
+.ureq-line-name { font-weight: 600; font-size: 14px; color: #111827; }
+.ureq-line-sub { font-size: 11px; color: #9ca3af; }
+.ureq-line-info { flex: 1; min-width: 0; }
+.ureq-qty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 2px 4px;
+}
+.ureq-qty button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    color: #374151;
+}
+.ureq-qty span { min-width: 22px; text-align: center; font-weight: 700; font-size: 14px; }
+.ureq-remove {
+    border: none;
+    background: transparent;
+    color: #b91c1c;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.ureq-label { display: block; font-size: 12px; font-weight: 600; color: #4b5563; margin-bottom: 6px; }
+.ureq-notes {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    resize: vertical;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+
+.ureq-submit {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #0f766e, #0d9488);
+    color: #fff;
+}
+.ureq-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.ureq-modal-back {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 16px;
+}
+.ureq-modal {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+.ureq-modal h3 { margin: 0 0 8px; font-size: 17px; color: #111827; }
+.ureq-modal-sub { margin: 0 0 16px; color: #6b7280; font-size: 13px; }
+.ureq-modal-qty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.ureq-modal-qty input {
+    width: 72px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+.ureq-modal-qty button {
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    display: flex;
+}
+.ureq-modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+.ureq-btn-primary {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: 600;
+    background: #0d9488;
+    color: #fff;
+    cursor: pointer;
+}
+.ureq-btn-secondary {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: 600;
+    background: #fff;
+    cursor: pointer;
+}

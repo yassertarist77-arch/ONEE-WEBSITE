@@ -1,0 +1,384 @@
+/* ════════════════════════════════════════════
+   User Login Page — Teal / Emerald theme
+   Scoped under .ul-root to avoid admin CSS clash
+   ════════════════════════════════════════════ */
+
+.ul-root {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ── Background ── */
+.ul-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px 56px;
+    box-sizing: border-box;
+    background: linear-gradient(
+        130deg,
+        #020d0a 0%,
+        #0a2620 30%,
+        #0d3b2e 60%,
+        #062218 100%
+    );
+    background-size: 240% 240%;
+    animation: ulGradDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes ulGradDrift {
+    0%   { background-position: 0% 40%; }
+    100% { background-position: 100% 60%; }
+}
+
+.ul-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.035;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 70%);
+}
+
+/* ── Floating orbs ── */
+.ul-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(70px);
+    opacity: 0.35;
+    animation: ulOrbFloat 12s ease-in-out infinite alternate;
+}
+
+.ul-orb-1 {
+    width: 500px;
+    height: 500px;
+    top: -120px;
+    left: -140px;
+    background: radial-gradient(circle, #10b981 0%, #059669 50%, transparent 70%);
+    animation-duration: 14s;
+}
+
+.ul-orb-2 {
+    width: 400px;
+    height: 400px;
+    bottom: -80px;
+    right: -100px;
+    background: radial-gradient(circle, #0d9488 0%, #0f766e 50%, transparent 70%);
+    animation-duration: 10s;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes ulOrbFloat {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(20px, -20px) scale(1.08); }
+}
+
+/* ── Card ── */
+.ul-card {
+    position: relative;
+    z-index: 2;
+    max-width: 440px;
+    width: 100%;
+    padding: 48px 40px 40px;
+    box-sizing: border-box;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow:
+        0 4px 24px rgba(2, 13, 10, 0.14),
+        0 32px 64px -16px rgba(4, 30, 20, 0.5),
+        inset 0 1px 0 rgba(255,255,255,0.7);
+    animation: ulCardIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ul-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.9),
+        rgba(16,185,129,0.3),
+        rgba(13,148,136,0.2)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+@keyframes ulCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.94);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* ── Brand ── */
+.ul-brand {
+    text-align: center;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.ul-logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #34d399 0%, #059669 45%, #047857 100%);
+    box-shadow:
+        0 12px 32px -8px rgba(5, 150, 105, 0.65),
+        inset 0 2px 0 rgba(255,255,255,0.35);
+    animation: ulLogoFloat 5s ease-in-out infinite;
+}
+
+.ul-logo-icon {
+    color: #fff;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+}
+
+@keyframes ulLogoFloat {
+    0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 12px 32px -8px rgba(5,150,105,0.65), inset 0 2px 0 rgba(255,255,255,0.35);
+    }
+    50% {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 40px -6px rgba(52,211,153,0.5), inset 0 2px 0 rgba(255,255,255,0.35);
+    }
+}
+
+.ul-title {
+    margin: 18px 0 6px;
+    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: #0a1628;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+}
+
+.ul-subtitle {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b5563;
+    letter-spacing: 0.02em;
+}
+
+.ul-tagline {
+    margin: 8px 0 0;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* ── Role badge ── */
+.ul-role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0 auto 24px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: rgba(16,185,129,0.1);
+    border: 1px solid rgba(16,185,129,0.25);
+    font-size: 11px;
+    font-weight: 700;
+    color: #065f46;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    width: fit-content;
+    position: relative;
+    z-index: 1;
+}
+
+.ul-role-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 2px rgba(16,185,129,0.25);
+    animation: ulDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes ulDotPulse {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(16,185,129,0.25); }
+    50%       { box-shadow: 0 0 0 5px rgba(16,185,129,0.1); }
+}
+
+/* ── Form ── */
+.ul-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.ul-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.ul-field label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.ul-input {
+    width: 100%;
+    height: 50px;
+    padding: 0 17px;
+    font-size: 15px;
+    border: 1.5px solid rgba(15,29,48,0.1);
+    border-radius: 12px;
+    color: #0f172a;
+    background: rgba(255,255,255,0.92);
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s, transform 0.2s;
+}
+
+.ul-input:hover  { border-color: rgba(5,150,105,0.25); }
+
+.ul-input:focus {
+    outline: none;
+    border-color: #059669;
+    box-shadow: 0 0 0 4px rgba(5,150,105,0.12);
+    background: #fff;
+    transform: translateY(-1px);
+}
+
+/* ── Button ── */
+.ul-button {
+    width: 100%;
+    height: 50px;
+    margin-top: 6px;
+    background: linear-gradient(135deg, #34d399 0%, #059669 40%, #047857 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.25s, filter 0.2s;
+}
+
+.ul-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.ul-button:hover:not(:disabled)::after { transform: translateX(100%); }
+
+.ul-button:hover:not(:disabled) {
+    box-shadow: 0 12px 32px -8px rgba(5,150,105,0.55);
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+.ul-button:active:not(:disabled) { transform: translateY(0); }
+
+.ul-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ── Error ── */
+.ul-error {
+    padding: 13px 16px;
+    font-size: 13px;
+    border-radius: 10px;
+    background: rgba(254,242,242,0.95);
+    color: #991b1b;
+    border-left: 4px solid #dc2626;
+    box-shadow: 0 4px 16px rgba(220,38,38,0.08);
+}
+
+/* ── Footer ── */
+.ul-footer-note {
+    margin: 26px 0 0;
+    text-align: center;
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.45;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+.ul-copyright {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(226,232,240,0.5);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+/* ── Spinner ── */
+.ul-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: ulSpin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes ulSpin { to { transform: rotate(360deg); } }
+
+@media (max-width: 480px) {
+    .ul-card {
+        padding: 38px 24px 32px;
+        border-radius: 18px;
+    }
+    .ul-title { font-size: 26px; }
+}
